@@ -1,0 +1,67 @@
+# ---------------------------------------------------------------------------
+# Alternate training configuration — 2-D MRI recovery
+# ---------------------------------------------------------------------------
+# This configuration targets undersampled MRI reconstruction using the
+# UDiff framework.  Key differences from the default 1-D config:
+#   • 2-D complex-valued signals (single-coil MRI slices)
+#   • Partial-Fourier sensing (k-space sub-sampling)
+#   • Deeper denoiser with more channels
+#   • Larger batch size and longer training schedule
+#   • AdamW optimiser with weight decay for regularisation
+# ---------------------------------------------------------------------------
+
+experiment:
+  name: udiff_2d_mri
+  seed: 123
+
+data:
+  signal_type: 2d
+  image_size: 128
+  signal_length: 16384          # 128 × 128 (flattened)
+  sparsity_ratio: 0.15
+  compression_ratio: 0.25       # 4× acceleration
+  sensing_matrix: partial_fourier
+  snr_db: 40
+  num_train: 20000
+  num_val: 4000
+  num_test: 4000
+  transform: wavelet             # sparsifying transform for the signal
+
+model:
+  num_stages: 12
+  denoiser_channels: [64, 128, 256, 256]
+  sensing_mode: mri
+  signal_channels: 2             # real + imaginary components
+  use_data_consistency: true
+  data_consistency_weight: 0.1
+
+training:
+  batch_size: 8
+  num_epochs: 800
+  learning_rate: 0.0002
+  weight_decay: 0.01
+  optimizer: adamw
+  scheduler: cosine_warmup
+  warmup_epochs: 20
+  gradient_clip: 0.5
+  mixed_precision: true
+  deep_supervision: true
+  stage_weights: exponential
+  ema_decay: 0.999               # exponential moving average of weights
+
+logging:
+  log_dir: ./logs
+  log_interval: 5
+  use_tensorboard: true
+  log_images: true
+  image_log_interval: 50
+
+checkpoint:
+  save_dir: ./checkpoints
+  save_best: true
+  save_interval: 25
+  keep_last_k: 5                 # retain only the most recent K checkpoints
+
+evaluation:
+  metrics: [psnr, ssim, nmse]
+  eval_interval: 10

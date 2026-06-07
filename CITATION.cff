@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Deep Unfolding of Diffusion Probabilistic Models for Efficient Sparse Signal Recovery"
+type: software
+version: 1.0.0
+date-released: 2024-01-01
+license: MIT
+repository-code: "https://github.com/anonymous/udiff"
+keywords:
+  - diffusion probabilistic models
+  - deep unfolding
+  - compressed sensing
+  - sparse signal recovery
+  - MRI reconstruction
+  - iterative optimization
+abstract: >-
+  UDiff is a deep unfolding framework that integrates diffusion probabilistic
+  models with iterative optimization for efficient sparse signal recovery in
+  compressed sensing. The framework embeds learned diffusion-based denoisers
+  within a measurement-consistent iterative pipeline, achieving state-of-the-art
+  performance with only K=8 unrolling stages on both synthetic sparse recovery
+  and MRI reconstruction tasks.

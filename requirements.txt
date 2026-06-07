@@ -1,0 +1,27 @@
+# UDiff - Deep Unfolded Diffusion Recovery
+# Core dependencies
+
+# Deep learning
+torch>=2.0.0
+torchvision>=0.15.0
+
+# Scientific computing
+numpy>=1.24.0
+scipy>=1.10.0
+
+# Configuration
+pyyaml>=6.0
+
+# Logging & visualization
+tensorboard>=2.13.0
+matplotlib>=3.7.0
+tqdm>=4.65.0
+
+# Machine learning utilities
+scikit-learn>=1.2.0
+
+# Data handling
+h5py>=3.8.0
+
+# Testing
+pytest>=7.3.0

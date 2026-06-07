@@ -1,0 +1,51 @@
+# ---------------------------------------------------------------------------
+# Default configuration — 1-D sparse signal recovery with Gaussian sensing
+# ---------------------------------------------------------------------------
+# This file defines the baseline experiment for recovering sparse 1-D
+# signals from compressed Gaussian measurements using the UDiff framework.
+# Override individual fields via the command line or by creating a separate
+# YAML file and merging at runtime.
+# ---------------------------------------------------------------------------
+
+experiment:
+  name: udiff_1d_gaussian
+  seed: 42
+
+data:
+  signal_type: 1d
+  signal_length: 256
+  sparsity_ratio: 0.1
+  compression_ratio: 0.5
+  sensing_matrix: gaussian
+  snr_db: 30
+  num_train: 10000
+  num_val: 2000
+  num_test: 2000
+
+model:
+  num_stages: 8
+  denoiser_channels: [64, 128, 128]
+  sensing_mode: general
+  signal_channels: 1
+
+training:
+  batch_size: 16
+  num_epochs: 500
+  learning_rate: 0.0001
+  weight_decay: 0.0
+  optimizer: adam
+  scheduler: cosine
+  gradient_clip: 1.0
+  mixed_precision: false
+  deep_supervision: true
+  stage_weights: linear
+
+logging:
+  log_dir: ./logs
+  log_interval: 10
+  use_tensorboard: true
+
+checkpoint:
+  save_dir: ./checkpoints
+  save_best: true
+  save_interval: 50
