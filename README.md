@@ -1,4 +1,4 @@
-<![CDATA[<div align="center">
+<div align="center">
 
 # Deep Unfolding of Diffusion Probabilistic Models for Efficient Sparse Signal Recovery
 
@@ -375,4 +375,3 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 Made with ❤️ for the signal processing community
 
 </div>
-]]>
