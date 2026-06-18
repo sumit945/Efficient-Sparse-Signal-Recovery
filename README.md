@@ -354,8 +354,7 @@ If you find this work useful in your research, please cite:
 ```bibtex
 @article{udiff2024,
   title     = {Deep Unfolding of Diffusion Probabilistic Models for Efficient Sparse Signal Recovery},
-  journal   = {IEEE Signal Processing Letters},
-  year      = {2024},
+  year      = {2026},
   note      = {Anonymous submission}
 }
 ```
