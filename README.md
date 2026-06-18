@@ -352,7 +352,7 @@ python inference.py \
 If you find this work useful in your research, please cite:
 
 ```bibtex
-@article{udiff2024,
+@article{udiff2026,
   title     = {Deep Unfolding of Diffusion Probabilistic Models for Efficient Sparse Signal Recovery},
   year      = {2026},
   note      = {Anonymous submission}
